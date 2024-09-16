@@ -62,10 +62,10 @@ function PatientList() {
         console.log('Edit patient with ID:', id);
     };
 
-    const handleAppointmentClick = (id) => {
-        // Navigate to the appointment page of a specific patient
-        navigate(`/appointments/${id}`);
-    };
+    //const handleAppointmentClick = (id) => {
+    //    // Navigate to the appointment page of a specific patient
+    //    navigate(`/appointments/${id}`);
+    //};
 
     return (
         <div className="patient-list-container">

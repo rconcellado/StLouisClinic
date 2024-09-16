@@ -6,12 +6,13 @@ import { faHome, faUser, faUserNurse, faClock, faFileInvoice, faChartLine, faCog
     from '@fortawesome/free-solid-svg-icons';
 
 function Dashboard({ children }) {
-    const [isSidebarOpen, setSidebarOpen] = useState(true);
+    //const [isSidebarOpen, setSidebarOpen] = useState(true);
+    const [isSidebarOpen] = useState(true);
     const navigate = useNavigate();
 
-    const toggleSidebar = () => {
-        setSidebarOpen(!isSidebarOpen);
-    };
+    //const toggleSidebar = () => {
+    //    setSidebarOpen(!isSidebarOpen);
+    //};
 
     const handleNavigation = (path) => {
         navigate(path);

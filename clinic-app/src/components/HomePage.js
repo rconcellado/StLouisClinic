@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+//import React, { useState } from 'react';
+//import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../css/HomePage.css';  // Link to CSS for the page
 
 function HomePage() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [submitted, setSubmitted] = useState(false);
+    //const [name, setName] = useState('');
+    //const [email, setEmail] = useState('');
+    //const [submitted, setSubmitted] = useState(false);
+    //const [setSubmitted] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (name && email) {
-            toast.success('Thank you for contacting us! We will get back to you soon.');
-            setName('');
-            setEmail('');
-            setSubmitted(true);
-        }
-    };
+    //const handleSubmit = (e) => {
+    //    e.preventDefault();
+    //    if (name && email) {
+    //        toast.success('Thank you for contacting us! We will get back to you soon.');
+    //        setName('');
+    //        setEmail('');
+    //        setSubmitted(true);
+    //    }
+    //};
 
     return (
         <div>

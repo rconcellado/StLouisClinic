@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 
 const AppointmentList = () => {
-    const [appointments, setAppointments] = useState([]);
+    const [setAppointments] = useState([]);
     const [filteredAppointments, setFilteredAppointments] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
