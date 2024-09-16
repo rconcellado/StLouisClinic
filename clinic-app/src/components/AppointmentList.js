@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 
 const AppointmentList = () => {
-    const [setAppointments] = useState([]);
+    const [appointments, setAppointments] = useState([]); // Fixed here
     const [filteredAppointments, setFilteredAppointments] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -17,14 +17,14 @@ const AppointmentList = () => {
     const pageSize = 15;
     const navigate = useNavigate();
 
-    // Debounce searchTerm and update it after 500ms delay
+    // Debounce searchTerm and update it after 1000ms delay
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebouncedSearchTerm(searchTerm);  // Update debounced term after delay
         }, 1000);
 
         return () => {
-            clearTimeout(handler);  // Clear timeout if the search term changes before 500ms
+            clearTimeout(handler);  // Clear timeout if the search term changes before 1000ms
         };
     }, [searchTerm]);
 
@@ -47,6 +47,21 @@ const AppointmentList = () => {
     }, [currentPage, debouncedSearchTerm]); // Only triggers when the debounced search term changes
 
     const handlePageChange = (newPage) => setCurrentPage(newPage);
+
+    // Handle search functionality
+    const handleSearch = () => {
+        setCurrentPage(1);  // Reset to page 1 when search is triggered
+        if (searchTerm.trim() === '') {
+            setFilteredAppointments(appointments);
+        } else {
+            const filtered = appointments.filter((appointment) =>
+                appointment.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                appointment.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                appointment.id.toString().includes(searchTerm)
+            );
+            setFilteredAppointments(filtered);
+        }
+    };
 
     // Search logic is now debounced, so handleSearch is no longer needed
     const handleKeyDown = (e) => {
@@ -73,7 +88,7 @@ const AppointmentList = () => {
                         onKeyDown={handleKeyDown}  // Trigger search on Enter key press
                         disabled={loading}
                     />
-                    <button className="search-btn" disabled={loading}>
+                    <button className="search-btn" disabled={loading} onClick={handleSearch}>
                         <FontAwesomeIcon icon={faSearch} />
                     </button>
                 </div>
