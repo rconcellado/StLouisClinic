@@ -1,0 +1,73 @@
+/* AppointmentPage.css */
+
+.appointment-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.calendar-container,
+.time-selection {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.calendar-container h2,
+.time-selection h2 {
+  margin-bottom: 10px;
+}
+
+.time-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.time-button {
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.time-button.selected {
+  background-color: #00bcd4;
+  color: white;
+}
+
+.time-button:hover {
+  background-color: #ddd;
+}
+
+/* Navigation buttons */
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+}
+
+.back-button,
+.next-button {
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.back-button:hover,
+.next-button:hover {
+  background-color: #0097a7;
+}

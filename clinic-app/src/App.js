@@ -1,43 +1,55 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Dashboard from './components/Dashboard';  // This includes your collapsible sidebar
-import HomePage from './components/HomePage'; 
-
-import PatientList from './components/PatientList';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import MainSection from './components/MainSection';
+import InfoSection from './components/InfoSection';
+import PackagesSection from './components/PackagesSection';
+import Footer from './components/Footer';
+import LoginForm from './components/LoginForm'; // Patient/Guest Login
+import StaffLoginForm from './components/StaffLoginForm'; // Staff Login
+import AppointmentPage from './components/AppointmentPage'; // Appointment Page
 import PatientForm from './components/PatientForm';
-import ProviderForm from './components/ProviderForm';
 
-import ProviderList from './components/ProviderList';
+import StaffDashboard from './components/StaffDashboard';
+import ProtectedStaffRoute from './components/ProtectedStaffRoute';
 
-import AppointmentDetailsPage from './components/AppointmentDetailsPage';
-
-import AppointmentList from './components/AppointmentList';
-
+import './css/Apps.css';
 
 function App() {
-    return (
-        <Router>
-            <div className="App">
-                {/* Wrapping all routes inside the Dashboard (which includes the sidebar) */}
-                <Dashboard>
-                    <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/patients" element={<PatientList />} />
-                        <Route path="/add-patient" element={<PatientForm />} /> {/* Add patient route */}
-                        <Route path="/edit-patient/:id" element={<PatientForm />} /> {/* Edit patient route with ID */}
+  return (
+    <Router>
+      <div className="App">
+        <Header /> {/* Header included for navigation */}
+        <div className="content"> {/* This will push the footer down */}
+          <Routes>
+            {/* Home Page Route */}
+            <Route path="/" element={
+              <>
+                <MainSection />
+                <InfoSection />
+                <PackagesSection />
+              </>
+            } />
 
-                        <Route path="/providers" element={<ProviderList />} />
-                        <Route path="/add-provider" element={<ProviderForm />} /> {/* Add provider route */}
-                        <Route path="/edit-provider/:id" element={<ProviderForm />} /> {/* Edit patient route with ID */}
+            {/* Patient/Guest Login Route */}
+            <Route path="/login" element={<LoginForm />} />
 
-                        <Route path="/appointments" element={<AppointmentList />} />
-                        <Route path="/appointments/:appointmentId" element={<AppointmentDetailsPage />} />
-                        {/* Future routes can go here */}
-                    </Routes>
-                </Dashboard>
-            </div>
-        </Router>
-    );
+            {/* Staff Login Route */}
+            <Route path="/staff-login" element={<StaffLoginForm />} />
+
+            {/* Appointment Page Route */}
+            <Route path="/appointment" element={<AppointmentPage />} />
+
+            {/* Your routes for staff */}
+            <Route path="/staff-dashboard" element={<ProtectedStaffRoute><StaffDashboard /></ProtectedStaffRoute>} />
+
+            <Route path="/add-patient" element={<PatientForm />} /> {/* Add patient route */}
+          </Routes>
+        </div>
+        <Footer /> {/* Footer always stays at the bottom */}
+      </div>
+    </Router>
+  );
 }
 
 export default App;

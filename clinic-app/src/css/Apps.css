@@ -1,0 +1,207 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes up the full height of the viewport */
+}
+
+/* Container to wrap the content and push the footer up */
+.content {
+    flex: 1; /* Ensures that the content area takes up the available space */
+}
+
+/* Header styles */
+.header-container {
+    background-color: #0056b3; /* Blue color */
+    padding: 10px 0;
+    text-align: center;
+    width: 100%; /* Ensures the header spans the full width */
+}
+
+.header-container .logo {
+    width: 150px;
+}
+
+/* Banner image styles */
+.banner {
+    width: 100%;
+    height: 300px; /* Adjust the height as needed */
+    overflow: hidden;
+    margin-bottom: 20px; /* Add space below the banner */
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire banner area */
+    display: block;
+}
+
+nav {
+    width: 100%; /* Full-width for the nav */
+    background-color: #0056b3; /* Ensure the background spans the entire width */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Center the menu items */
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+/* Hover effect for navigation links */
+nav ul li a:hover {
+    background-color: #003f7a; /* Darker blue on hover */
+    border-radius: 4px;
+}
+
+/* Main section */
+.main-section {
+    padding: 50px 20px; /* Increased padding for better spacing */
+    background-color: #fff;
+    text-align: center;
+}
+
+.main-section .intro h1 {
+    color: #0056b3;
+    font-size: 2.5rem; /* Increased font size for more emphasis */
+    margin-bottom: 20px; /* Added spacing below the title */
+}
+
+.main-section p {
+    font-size: 1.2rem; /* Slightly larger text for better readability */
+    margin-bottom: 30px; /* Spacing between paragraphs */
+}
+
+/* Appointment button */
+.appointment-button {
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.appointment-button:hover {
+    background-color: #003b73; /* Darker blue for hover */
+}
+
+/* Info section */
+.info-section {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f4f4f4;
+    padding: 40px 20px; /* Increased padding for better spacing */
+}
+
+.info-box {
+    width: 30%;
+    background-color: #fff;
+    padding: 30px; /* Increased padding for a cleaner look */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 10px; /* Slightly rounded corners */
+}
+
+.info-box h2 {
+    color: #0056b3; /* Blue color */
+    font-size: 1.8rem; /* Larger heading for emphasis */
+    margin-bottom: 15px;
+}
+
+.info-box p {
+    font-size: 1.1rem; /* Slightly larger text for readability */
+    margin-bottom: 20px;
+}
+
+.info-box a {
+    font-size: 1.1rem;
+    color: #0056b3; /* Blue link color */
+    text-decoration: none;
+}
+
+.info-box a:hover {
+    text-decoration: underline;
+}
+
+/* Packages section */
+.packages {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 20px; /* Increased padding */
+    background-color: #fff;
+}
+
+.package {
+    width: 30%;
+    background-color: #f4f4f4;
+    padding: 30px; /* Increased padding */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.package h3 {
+    color: #d9534f; /* Red color */
+    font-size: 1.8rem; /* Larger font size for emphasis */
+    margin-bottom: 15px;
+}
+
+.package ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    font-size: 1.1rem; /* Slightly larger font for better readability */
+    margin-bottom: 20px;
+}
+
+.package p {
+    font-weight: bold;
+    color: #d9534f; /* Red color */
+    font-size: 1.2rem; /* Increased font size */
+}
+
+/* Footer */
+footer {
+    background-color: #0056b3;
+    color: white;
+    text-align: center;
+    padding: 15px; /* Increased padding for better spacing */
+    font-size: 1.1rem; /* Slightly larger footer text */
+    width: 100%;
+    position: relative;
+    top: 10px; /* Move the footer slightly higher */
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Hover effects for footer links */
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

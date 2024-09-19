@@ -1,38 +1,133 @@
+/* Ensure the body takes the full height of the viewport */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+/* App container should fill the height of the viewport */
 .App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Content should expand to take up available space */
+.content {
+  flex-grow: 1; /* Allows the content to grow and push the footer down */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header styles */
+.header-container {
+  background-color: #0056b3; /* Blue color */
+  padding: 10px 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Navigation styles */
+.header-container .logo {
+  width: 150px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav ul {
+  list-style: none;
+  padding: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Main content section */
+.main-section {
+  padding: 20px;
+  background-color: #fff;
+  text-align: center;
+  flex-grow: 1; /* Make the main section grow to fill available space */
+}
+
+.main-section .intro h1 {
+  color: #0056b3;
+}
+
+.appointment-button {
+  background-color: #0056b3;
   color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+/* Info section styles */
+.info-section {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f4f4f4;
+  padding: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.info-box {
+  width: 30%;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.info-box h2 {
+  color: #0056b3; /* Blue color */
+}
+
+/* Packages section styles */
+.packages {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.package {
+  width: 30%;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.package h3 {
+  color: #d9534f; /* Red color */
+}
+
+.package ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.package p {
+  font-weight: bold;
+  color: #d9534f; /* Red color */
+}
+
+/* Footer section */
+footer {
+  background-color: #0056b3;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: auto; /* Push the footer to the bottom of the page */
+  width: 100%; /* Make sure the footer spans across the entire page */
 }

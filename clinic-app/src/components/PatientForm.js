@@ -3,7 +3,7 @@ import { addPatients, getPatientById, updatePatient } from '../services/patientS
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../css/PatientForm.css';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';  // Import useLocation to check the state
 
 function PatientForm() {
     const [patient, setPatient] = useState({
@@ -18,6 +18,7 @@ function PatientForm() {
 
     const navigate = useNavigate();
     const { id } = useParams();  // Get the patient ID from the URL if it's present (Edit mode)
+    const location = useLocation();  // To get the state passed from the appointment page
 
     // Fetch patient data if in edit mode
     useEffect(() => {
@@ -90,10 +91,15 @@ function PatientForm() {
         navigate('/patients');
     };
 
+    // Determine the title based on whether state from the appointment page is passed or if it's an edit mode
+    const pageTitle = location.state && location.state.selectedDate && location.state.selectedTime
+        ? 'Personal Details'
+        : (id ? 'Edit Patient' : 'Add New Patient');
+
     return (
         <div className="form-container">
             <ToastContainer />
-            <h2>{id ? 'Edit Patient' : 'Add New Patient'}</h2>
+            <h2>{pageTitle}</h2>  {/* Conditionally render the title based on the state */}
             <form onSubmit={handleSubmit} className="patient-form">
 
                 <div className="form-group">
