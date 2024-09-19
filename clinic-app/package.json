@@ -58,8 +58,9 @@
     "@jridgewell/sourcemap-codec": "^1.5.0",
     "@rollup/plugin-terser": "^0.4.4"
   },
-  "overrides": {
+  "resolutions": {
     "glob": "11.0.0",
+    "rimraf": "6.0.1",
     "svgo": "2.8.0"
   }
 }
