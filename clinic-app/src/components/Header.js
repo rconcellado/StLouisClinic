@@ -5,7 +5,7 @@ function Header() {
   const location = useLocation(); // Get the current path
 
   // Determine if the user is on the homepage or another route
-  const isHomepage = location.pathname === '/';
+  // const isHomepage = location.pathname === '/';
 
   return (
     <header className="header-container">

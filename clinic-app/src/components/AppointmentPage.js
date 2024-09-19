@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar'; // Import the calendar component
 import 'react-calendar/dist/Calendar.css'; // Import calendar styles
 import { useNavigate } from 'react-router-dom';
-import Header from './Header'; // Import Header
+// import Header from '../components/Header'; // Import Header
 import '../css/AppointmentPage.css'; // Import custom styles
 
 function AppointmentPage() {

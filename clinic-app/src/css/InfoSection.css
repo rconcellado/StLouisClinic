@@ -1,0 +1,14 @@
+.info-button {
+    background: none;
+    border: none;
+    color: #0056b3; /* Same as link color */
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    font-size: inherit;
+  }
+  
+  .info-button:hover {
+    color: #003f7a; /* Darker blue on hover */
+  }
+  
