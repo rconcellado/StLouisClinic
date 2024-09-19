@@ -26,7 +26,7 @@ function LoginForm() {
           </div>
 
           <button type="submit" className="btn">Sign in</button>
-          <a href="#" className="forgot-password">Forgot password?</a>
+          <button className="link-style">Forgot Password</button>
 
           {/* Book as Guest Button */}
           {/* <button type="button" className="btn-outline" onClick={handleBookAsGuest}>

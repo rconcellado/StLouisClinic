@@ -22,7 +22,7 @@ function MainSection() {
         <p>
           St. Louis Clinic is proud to offer a wide range of community health services, including those provided through our specialized clinics. We are committed to providing quality care to the community.
         </p>
-        <a href="#" onClick={handleBookAppointment} className="appointment-button">Book an Appointment</a>
+        <a onClick={handleBookAppointment} className="appointment-button">Book an Appointment</a>
       </div>
     </section>
   );

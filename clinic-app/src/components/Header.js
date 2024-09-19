@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom'; // Use Link for navigation
 
 function Header() {
-  const location = useLocation(); // Get the current path
+  //const location = useLocation(); // Get the current path
 
   // Determine if the user is on the homepage or another route
   // const isHomepage = location.pathname === '/';
