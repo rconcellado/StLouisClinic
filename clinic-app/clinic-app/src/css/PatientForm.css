@@ -1,0 +1,98 @@
+/* Container for the form */
+.form-container {
+    padding: 20px;
+    width: 100%; /* Full width */
+    max-width: 800px; /* Limit max width */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 20px 0; /* Only top and bottom margin, remove auto-centering */
+    padding-left: 40px; /* Padding left */
+    padding-right: 40px; /* Padding right */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+    text-align: left; /* Ensure left alignment for text */
+}
+
+    /* Input field styles */
+    .form-container input, .form-container select {
+        margin-bottom: 10px;
+        padding: 10px;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box; /* Ensure padding doesn't affect width */
+    }
+
+    /* Full width for single-row inputs */
+    .form-container label {
+        display: block;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 5px; /* Add space between label and input */
+        text-align: left; /* Ensure labels are aligned to the left */
+    }
+
+/* Two-column layout for First Name and Last Name */
+.form-row {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    gap: 20px; /* Gap between columns */
+}
+
+    .form-row input {
+        width: calc(50% - 10px); /* Adjust width to accommodate gap */
+    }
+
+/* Button group for submit and back buttons */
+.button-group {
+    display: flex;
+    gap: 20px; /* Adjust space between buttons */
+    margin-top: 20px; /* Add margin to separate from the form */
+}
+
+.submit-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center; /* Ensure centered text */
+}
+
+    .submit-btn:hover {
+        background-color: #218838;
+    }
+
+.back-btn {
+    background-color: #6c757d; /* Gray background */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center; /* Ensure centered text */
+}
+
+    .back-btn:hover {
+        background-color: #5a6268; /* Darker gray on hover */
+    }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column; /* Stack the first and last name fields vertically */
+    }
+
+        .form-row input {
+            width: 100%; /* Make inputs full width */
+        }
+
+    .button-group {
+        flex-direction: column; /* Stack buttons vertically */
+    }
+
+    .submit-btn, .back-btn {
+        width: 100%; /* Ensure buttons take full width */
+    }
+}

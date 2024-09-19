@@ -1,0 +1,105 @@
+/* Add styles for the logo in the sidebar */
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-image {
+    max-width: 150px; /* Adjust width as needed */
+    height: auto;
+    border-radius: 50%; /* Optional: Make it round */
+}
+
+/* Container for the entire layout */
+.dashboard-container {
+    display: flex;
+    flex-direction: column; /* Stack the banner at the top */
+    min-height: 100vh; /* Ensures the dashboard takes the full viewport height */
+    width: 100%;
+}
+
+/* Banner section styling */
+.banner-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    background-color: #fff;
+    height: 50vh; /* Reduced height to 20vh, adjust as needed */
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+}
+
+/* Content wrapper to hold both the sidebar and the main content */
+.content-wrapper {
+    display: flex;
+    flex-direction: row; /* Aligns the sidebar and main content horizontally */
+    width: 100%;
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 250px;
+    background-color: #233b9e;
+    color: white;
+    height: 100vh; /* Full height of the viewport */
+    transition: width 0.3s ease, transform 0.3s ease;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.sidebar.collapsed {
+    width: 0;
+    transform: translateX(-100%); /* Fully collapse the sidebar on smaller screens */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 0;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Main content area styling */
+.main-content {
+    flex-grow: 2;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+/* Container for the action buttons */
+.action-buttons-container {
+    display: flex;
+    justify-content: flex-start; /* Aligns the buttons to the left */
+    margin-bottom: 20px; /* Add some margin at the bottom */
+    margin-left: 20px; /* Add space on the left side */
+}
+
+/* Styling for individual buttons */
+.add-patient-btn,
+.add-appointment-btn {
+    background-color: #233b9e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-right: 10px; /* Add space between the buttons */
+    cursor: pointer;
+}
+
+    .add-patient-btn:hover,
+    .add-appointment-btn:hover {
+        background-color: #d32f2f;
+    }
