@@ -78,9 +78,9 @@
     "workbox-webpack-plugin": "^6.4.1"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "cross-env CI=false react-scripts build",
-    "test": "node scripts/test.js"
+    "start": "cross-env NODE_ENV=development react-scripts start",
+    "build": "cross-env NODE_ENV=production CI=false react-scripts build",
+    "test": "cross-env NODE_ENV=test react-scripts test"
   },
   "eslintConfig": {
     "extends": [

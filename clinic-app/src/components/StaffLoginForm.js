@@ -1,55 +1,85 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../css/StaffLoginForm.css'; // Assuming you have a separate CSS file for staff login styling
+import { useUser } from '../contexts/UserContext';  // Import the custom hook
+import '../css/StaffLoginForm.css';
+import LoginService from '../services/loginService';
 
-function StaffLoginForm() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+function LoginForm() {
+    const { setUserRole } = useUser();  // Use the custom hook to access setUserRole
+    const navigate = useNavigate();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    
-    // Placeholder for authentication logic
-    if (username === 'staffUser' && password === 'staffPass123') {
-      // Store a token or role in local storage or session storage
-      localStorage.setItem('role', 'staff');
-      
-      // Redirect to the staff dashboard or appropriate staff page
-      navigate('/staff-dashboard');
-    } else {
-      alert('Invalid staff credentials');
-    }
-  };
+    const handleLogin = async (e) => {
+        e.preventDefault();
 
-  return (
-    <div className="staff-login-container">
-      <h2>Staff Login</h2>
-      <form onSubmit={handleLogin}>
-        <div className="input-container">
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+        try {
+            const { isValid, role } = await LoginService.login(username, password);
+            if (isValid) {
+                setUserRole(role);  // Update the global userRole
+                navigate(role === 'staff' ? '/staff-dashboard' : '/dashboard');
+            } else {
+                setErrorMessage('Invalid username or password');
+            }
+        } catch (error) {
+            setErrorMessage('An error occurred while logging in. Please try again.');
+        }
+    };
+
+    return (
+        <div className="staff-login-wrapper">
+            <div className="staff-login-container">
+                {/* Icon container for the top circle */}
+                <div className="icon-container">
+                    <img src="lock.png" alt="Login Icon" />
+                </div>
+
+                {/* Title for the form */}
+                <h2>Login Now</h2>
+
+                {/* Login form */}
+                <form onSubmit={handleLogin}>
+                    {/* Username Input Field */}
+                    <div className="input-container">
+                        <input
+                            type="text"
+                            placeholder="Enter your Username"
+                            required
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                    </div>
+
+                    {/* Password Input Field */}
+                    <div className="input-container">
+                        <input
+                            type="password"
+                            placeholder="Enter your Password"
+                            required
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+
+                    {/* Error Message */}
+                    {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+                    {/* Sign-in button */}
+                    <button type="submit" className="btn">Login</button>
+
+                    {/* Links for Forgot Password and Create Account */}
+                    {/*<div className="forgot-password">*/}
+                    {/*    <a href="#" className="link-style">Forgot Password?</a>*/}
+                    {/*</div>*/}
+                    {/*<div className="create-account">*/}
+                    {/*    <a href="#" className="link-style">Don't have an account?</a>*/}
+                    {/*</div>*/}
+                </form>
+            </div>
         </div>
-        <div className="input-container">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className="btn">Log in</button>
-      </form>
-    </div>
-  );
+    );
+
 }
 
-export default StaffLoginForm;
+export default LoginForm;

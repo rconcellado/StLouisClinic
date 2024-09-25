@@ -1,55 +1,64 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
+import Layout from './components/Layout'; // Import the Layout component
 import MainSection from './components/MainSection';
 import InfoSection from './components/InfoSection';
 import PackagesSection from './components/PackagesSection';
-import Footer from './components/Footer';
 import LoginForm from './components/LoginForm'; // Patient/Guest Login
 import StaffLoginForm from './components/StaffLoginForm'; // Staff Login
 import AppointmentPage from './components/AppointmentPage'; // Appointment Page
 import PatientForm from './components/PatientForm';
-
 import StaffDashboard from './components/StaffDashboard';
 import ProtectedStaffRoute from './components/ProtectedStaffRoute';
+import { UserProvider } from './contexts/UserContext'; // Import UserProvider
+
+import PatientList from './components/PatientList'; // Staff Login
+import ProviderList from './components/ProviderList'; // Staff Login
+import AppointmentList from './components/AppointmentList'; // Staff Login
 
 import './css/Apps.css';
 
 function App() {
-  return (
-    <Router>
-      <div className="App">
-        <Header /> {/* Header included for navigation */}
-        <div className="content"> {/* This will push the footer down */}
-          <Routes>
-            {/* Home Page Route */}
-            <Route path="/" element={
-              <>
-                <MainSection />
-                <InfoSection />
-                <PackagesSection />
-              </>
-            } />
+    return (
+        <UserProvider> {/* Wrap the app with UserProvider */}
+            <Router>
+                <Routes>
+                    {/* Wrapping all routes with the Layout */}
+                    <Route path="/" element={<Layout />}>
+                        {/* Guest routes */}
+                        <Route
+                            index
+                            element={
+                                <>
+                                    <MainSection />
+                                    <InfoSection />
+                                    <PackagesSection />
+                                </>
+                            }
+                        />
+                        {/* Login Routes */}
+                        <Route path="login" element={<LoginForm />} />
+                        <Route path="staff-login" element={<StaffLoginForm />} />
+                        <Route path="appointment" element={<AppointmentPage />} />
 
-            {/* Patient/Guest Login Route */}
-            <Route path="/login" element={<LoginForm />} />
+                        {/* Protected staff routes */}
+                        <Route path="staff-dashboard" element={<ProtectedStaffRoute><StaffDashboard /></ProtectedStaffRoute>} />
 
-            {/* Staff Login Route */}
-            <Route path="/staff-login" element={<StaffLoginForm />} />
+                        <Route path="patient-list" element={<ProtectedStaffRoute><PatientList /></ProtectedStaffRoute>} />
+                        <Route path="provider-list" element={<ProtectedStaffRoute><ProviderList /></ProtectedStaffRoute>} />
+                        <Route path="appointment-list" element={<ProtectedStaffRoute><AppointmentList /></ProtectedStaffRoute>} />
 
-            {/* Appointment Page Route */}
-            <Route path="/appointment" element={<AppointmentPage />} />
-
-            {/* Your routes for staff */}
-            <Route path="/staff-dashboard" element={<ProtectedStaffRoute><StaffDashboard /></ProtectedStaffRoute>} />
-
-            <Route path="/add-patient" element={<PatientForm />} /> {/* Add patient route */}
-          </Routes>
-        </div>
-        <Footer /> {/* Footer always stays at the bottom */}
-      </div>
-    </Router>
-  );
+                        {/*<Route path="patients" element={<ProtectedStaffRoute><PatientForm /></ProtectedStaffRoute>} />*/}
+                       
+                        
+                        <Route path="billing" element={<ProtectedStaffRoute><div>Billing</div></ProtectedStaffRoute>} />
+                        <Route path="reports" element={<ProtectedStaffRoute><div>Reports</div></ProtectedStaffRoute>} />
+                        <Route path="settings" element={<ProtectedStaffRoute><div>Settings</div></ProtectedStaffRoute>} />
+                    </Route>
+                </Routes>
+            </Router>
+        </UserProvider>
+    );
 }
 
 export default App;

@@ -1,55 +1,63 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
-import '../css/LoginForm.css'; // Import the CSS file for styling
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../contexts/UserContext';  // Import the custom hook
+import '../css/LoginForm.css';
+import LoginService from '../services/loginService';
 
 function LoginForm() {
-  const navigate = useNavigate(); // Initialize the navigate function
+    const { setUserRole } = useUser();  // Use the custom hook to access setUserRole
+    const navigate = useNavigate();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
-  // Function to handle the Book as Guest button click
-  const handleBookAsGuest = () => {
-    navigate('/appointment'); // Navigate to the appointment page
-  };
+    const handleLogin = async (e) => {
+        e.preventDefault();
 
-  return (
-    <div className="login-container">
-      {/* Login Form Section */}
-      <div className="login-box">
-        <form>
-          <div className="input-container">
-            <i className="fas fa-envelope"></i>
-            <input type="email" placeholder="Email" required />
-          </div>
+        try {
+            const { isValid, role } = await LoginService.login(username, password);
+            if (isValid) {
+                setUserRole(role);  // Update the global userRole
+                navigate(role === 'staff' ? '/staff-dashboard' : '/dashboard');
+            } else {
+                setErrorMessage('Invalid username or password');
+            }
+        } catch (error) {
+            setErrorMessage('An error occurred while logging in. Please try again.');
+        }
+    };
 
-          <div className="input-container">
-            <i className="fas fa-lock"></i>
-            <input type="password" placeholder="Password" required />
-          </div>
-
-          <button type="submit" className="btn">Sign in</button>
-          <button className="link-style">Forgot Password</button>
-
-          {/* Book as Guest Button */}
-          {/* <button type="button" className="btn-outline" onClick={handleBookAsGuest}>
-            Book as Guest
-          </button> */}
-        </form>
-      </div>
-
-      {/* Book as Guest and Info Section */}
-      <div className="guest-info-box">
-        <p>
-          An account lets you <strong>view history</strong>, <strong>manage contact info</strong>, and <strong>make family bookings</strong>,
-          or you can book as a guest. You may also book by phone at 1-877-702-4486.
-        </p>
-        <div className="btn-group">
-          <button className="btn-outline">Create Account</button>
-          <button className="btn-outline" onClick={handleBookAsGuest}>
-            Book as Guest
-          </button>
+    return (
+        <div className="login-container">
+            <div className="login-box">
+                <form onSubmit={handleLogin}>
+                    <div className="input-container">
+                        <i className="fas fa-user"></i>
+                        <input
+                            type="text"
+                            placeholder="Username"
+                            required
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-container">
+                        <i className="fas fa-lock"></i>
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            required
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                    {errorMessage && <p className="error-message">{errorMessage}</p>}
+                    <button type="submit" className="btn">Sign in</button>
+                    <button className="link-style">Forgot Password</button>
+                </form>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default LoginForm;

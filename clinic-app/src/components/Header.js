@@ -1,32 +1,52 @@
-import React from 'react'; 
-import { Link, useLocation } from 'react-router-dom'; // Use Link for navigation
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useUser } from '../contexts/UserContext';  // Import the custom hook
 
-function Header() {
-  //const location = useLocation(); // Get the current path
+const Header = () => {
+    const { userRole, setUserRole } = useUser();  // Access the global userRole state
+    const navigate = useNavigate();
 
-  // Determine if the user is on the homepage or another route
-  // const isHomepage = location.pathname === '/';
+    const handleLogout = (e) => {
+        e.preventDefault();  // Prevent any default behavior
+        // Clear session storage or any authentication tokens
+        sessionStorage.removeItem('userRole');
+        setUserRole('guest');  // Update the role to guest
+        navigate('/');  // Redirect to homepage
+    };
 
-  return (
-    <header className="header-container">
-      {/* <h1>{isHomepage ? 'Welcome to St. Louis Clinic' : 'St. Louis Clinic Management System'}</h1> */}
-      <nav>
-        <ul>
-          {/* Home Link should navigate to the root path */}
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-          <li><Link to="/feedback">Feedback</Link></li>
-
-          {/* Add Patient/Guest Login Link */}
-          <li><Link to="/login">Patient/Guest Login</Link></li>
-
-          {/* Add Staff Login Link */}
-          <li><Link to="/staff-login">Staff Login</Link></li>
-
-        </ul>
-      </nav>
-    </header>
-  );
-}
+    return (
+        <header>
+            <nav>
+                <ul style={{ listStyleType: 'none', display: 'flex', gap: '15px', alignItems: 'center' }}>
+                    {userRole === 'staff' ? (
+                        <>
+                            <li><Link to="/staff-dashboard">Dashboard</Link></li>
+                            <li><Link to="/patient-list">Patients</Link></li>
+                            <li><Link to="/provider-list">Providers</Link></li>
+                            <li><Link to="/appointment-list">Appointments</Link></li>
+                            <li><Link to="/billing">Billing</Link></li>
+                            <li><Link to="/reports">Reports</Link></li>
+                            <li><Link to="/settings">Settings</Link></li>
+                            {/* Logout link */}
+                            <li>
+                                <a href="/" onClick={handleLogout} style={{ color: '#00aaff', textDecoration: 'none' }}>
+                                    Logout
+                                </a>
+                            </li>
+                        </>
+                    ) : (
+                        <>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/contact">Contact</Link></li>
+                            <li><Link to="/feedback">Feedback</Link></li>
+                            <li><Link to="/login">Patient/Guest Login</Link></li>
+                            <li><Link to="/staff-login">Staff Login</Link></li>
+                        </>
+                    )}
+                </ul>
+            </nav>
+        </header>
+    );
+};
 
 export default Header;
