@@ -71,6 +71,9 @@ Check out the live demo hosted on Azure: St. Louis Clinic Management System Link
 ## Provider List
 ![ProviderList Screenshot](https://github.com/rconcellado/StLouisClinic/blob/main/2024-09-26%2020_10_51-.png?raw=true)
 
+## Appointment List
+![AppointmentList Screenshot](https://github.com/rconcellado/StLouisClinic/blob/main/2024-09-26%2020_21_56-.png?raw=true)
+
 Logging & Error Monitoring
 This system uses Azure Application Insights for centralized logging and error tracking. Performance metrics, logs, and errors can be monitored in real-time through the Azure portal.
 
