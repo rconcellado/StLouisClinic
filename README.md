@@ -60,7 +60,9 @@ The application includes both a **React.js** front-end for user interaction and 
 Live Demo
 Check out the live demo hosted on Azure: St. Louis Clinic Management System Link: https://brave-mud-0f3647a0f.5.azurestaticapps.net/
 
-Screenshots:
+##Screenshots
+
+### Home Page
 ![HomePage Screensot](https://github.com/rconcellado/StLouisClinic/blob/main/2024-09-26%2019_55_17-.png?raw=true)
 
 Logging & Error Monitoring
