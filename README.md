@@ -28,35 +28,6 @@ The application includes both a **React.js** front-end for user interaction and 
 - **.NET 6 SDK** for the back-end.
 - **PostgreSQL** for the database.
 
-### Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/username/clinic-management-system.git
-2. Navigate to the project directory:
-   cd clinic-management-system
-3. Install dependencies for both the frontend and backend:
-    Frontend (React):
-      cd Frontend
-      npm install
-    Backend (ASP.NET Core):
-      cd Backend
-      dotnet restore
-4. Configure the database: Ensure PostgreSQL is running locally or configure it with your connection string:
-    "ConnectionStrings": {
-       "DefaultConnection": "Host=localhost;Database=clinicdb;Username=postgres;Password=yourpassword;"
-    }
-5. Run the application:
-    Frontend:
-      cd Frontend
-      npm start
-    Backend:
-      cd Backend
-      dotnet run
-6. Access the app:
-    Frontend: Open your browser and go to http://localhost:3000.
-    Backend: The backend APIs will be available at http://localhost:5000.
-
 Live Demo
 Check out the live demo hosted on Azure: St. Louis Clinic Management System Link: https://brave-mud-0f3647a0f.5.azurestaticapps.net/
 
@@ -85,14 +56,6 @@ CI/CD pipelines are configured using GitHub Actions to automate testing, buildin
 
 Contribution Guidelines
 If you’d like to contribute to this project:
-
-Fork the repository.
-Create a feature branch: git checkout -b feature/YourFeatureName.
-Commit your changes: git commit -m 'Add some feature'.
-Push to the branch: git push origin feature/YourFeatureName.
-Open a pull request.
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 Contact
 For any questions or support, feel free to reach out:
