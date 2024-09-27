@@ -90,8 +90,6 @@ For any questions or support, feel free to reach out:
 
 Email: rey.concellado@gmail.com
 LinkedIn: Reynaldo Concellado
-markdown
-Copy code
 
 ### Key Sections Included:
 - **Project Description**: Overview of what the project does and its purpose.
