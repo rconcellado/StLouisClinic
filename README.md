@@ -60,6 +60,9 @@ The application includes both a **React.js** front-end for user interaction and 
 Live Demo
 Check out the live demo hosted on Azure: St. Louis Clinic Management System Link: https://brave-mud-0f3647a0f.5.azurestaticapps.net/
 
+Screenshots:
+
+
 Logging & Error Monitoring
 This system uses Azure Application Insights for centralized logging and error tracking. Performance metrics, logs, and errors can be monitored in real-time through the Azure portal.
 
